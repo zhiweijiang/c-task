@@ -263,7 +263,7 @@ jiang@jiang-desktop:~/task$ ./a.out
 0   0   0   0   0
 
 35  89   6   1  42
-##jiang@jiang-desktop:~/task$ gcc -Wall 3.3.c 
+###jiang@jiang-desktop:~/task$ gcc -Wall 3.3.c 
 jiang@jiang-desktop:~/task$ ./a.out 
 
 I am a student 
@@ -379,28 +379,28 @@ pstr + 0 = '2'(=0x804a014)
 pstr + 1 = '9'(=0x804a015)
 pstr + 2 = '3'(=0x804a016)
 pstr + 3 = 'l'(=0x804a017)
-pstr + 4 = 'o'(=0x804a018)
 
+pstr + 4 = 'o'(=0x804a018)
 pstr + 5 = ' '(=0x804a019)
 pstr + 6 = 'w'(=0x804a01a)
 pstr + 7 = 'o'(=0x804a01b)
-pstr + 8 = 'r'(=0x804a01c)
 
+pstr + 8 = 'r'(=0x804a01c)
 pstr + 9 = 'l'(=0x804a01d)
 pstr + 10 = 'd'(=0x804a01e)
 pstr + 11 = '!'(=0x804a01f)
-pstr + 12 = ''(=0x804a020)
 
+pstr + 12 = ''(=0x804a020)
 pstr + 13 = ''(=0x804a021)
 pstr + 14 = ''(=0x804a022)
 pstr + 15 = ''(=0x804a023)
-pstr + 16 = ''(=0x804a024)
 
+pstr + 16 = ''(=0x804a024)
 pstr + 17 = '�'(=0x804a025)
 pstr + 18 = ''(=0x804a026)
 pstr + 19 = '(=0x804a027)
-pstr + 20 = ''(=0x804a028)
 
+pstr + 20 = ''(=0x804a028)
 pstr + 21 = ''(=0x804a029)
 pstr + 22 = ''(=0x804a02a)
 pstr + 23 = ''(=0x804a02b)
