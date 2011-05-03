@@ -22,13 +22,34 @@ int main(int argc, const char *argv[])
 int max_array(int a[], int n)
 {   
     int i, j;
-    int max_sum = 0;
+    int max_sum;
     int sum = 0;
     int min = 0;
     int max = n-1;
-
+    
+    max_sum = a[0];
+    for (i = 0; i < n; i++) 
+    {
+        if(max_sum < a[i])
+         max_sum = a[i];
+        if(a[i] >= 0)
+        {  
+            j++;
+            sum += a[i];
+        }
+    }
+    if(n == j)
+    {
+     max_sum = sum;
+     return max_sum;
+    }
     while(a[min] <= 0) min++;
+    if(min == n)
+       {
+            return max_sum;
+       }
     while(a[max] <= 0) max--;
+
     for (i = min; i < max+1; i++) 
     {
         sum = 0;
