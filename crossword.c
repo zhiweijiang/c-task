@@ -108,7 +108,9 @@ void crossword(char num[], int n)
 int input_error(char num[], int n)
 {
     int i, j;
-
+    
+    if(num[4] != '\n')
+        return 0;
     for (i = 0; i < n; i++) 
     {
         if(num[i]>0x39 || num[i]<0x30)
