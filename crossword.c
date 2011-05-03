@@ -1,15 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 #define N 4
 
-void init_num(int num[], int n);
-void crossword(int num[], int n);
+void init_num(char num[], int n);
+void crossword(char num[], int n);
+int input_error(char num[], int n);
+
 
 int main(int argc, const char *argv[])
 {
-    int num[N];
-    int i;
+    char num[N+1];
 
     init_num(num, N);
     crossword(num, N);
@@ -17,7 +19,7 @@ int main(int argc, const char *argv[])
 }
 
 
-void init_num(int num[], int n)
+void init_num(char num[], int n)
 {
     int i;
     int j;
@@ -25,7 +27,7 @@ void init_num(int num[], int n)
     srand(time(NULL));
     for (i = 0; i < n; i++) 
     {
-        num[i] = rand()%10;
+        num[i] =(char)(rand()%10+0x30);
         for (j = 0; j < i; j++) 
         {
             if(num[j]==num[i])
@@ -39,10 +41,9 @@ void init_num(int num[], int n)
 }
 
 
-void crossword(int num[], int n)
+void crossword(char num[], int n)
 {
-    int i, j;
-    int figures[n];
+    int i, j, k;
     char input_num[10];
     char str[] = "I GIVE UP";
 
@@ -53,46 +54,71 @@ void crossword(int num[], int n)
         if(strncmp(input_num, str, 9)==0)
         {
             printf("The right result:");
+            printf("%s\n", num);
+            break;
+        }
+        if(input_error(input_num, n))
+        {
+            for (i = 0,j = 0; i < n; i++) 
+            {
+                if(input_num[j] == num[i])
+                     j++;
+            }
+            if(n == j)
+             {
+                printf("YOU BET!\n");
+                printf("THe right result:%s\n", num);
+                break;
+            }
+            k = 0;
             for (i = 0; i < n; i++) 
             {
-                printf("%d", num[i]);
-            }
-            printf("\n");
-            break;
-        }
-        for (i = 0; i < n; i++) 
-        {
-            figures[i] = input_num[i]-0x30;
-        }
-        for (i = 0,j = 0; i < n; i++) 
-        {
-            if(figures[j] == num[i])
-                j++;
-        }
-        if(n == j)
-        {
-            printf("YOU BET!\n");
-            printf("THe right result:%s", input_num);
-            break;
-        }
-        for (i = 0; i < n; i++) 
-        {
-            for (j = 0; j < n; j++) 
-            {
-                if(num[i] == figures[j])
+                for (j = 0; j < n; j++) 
                 {
-                    if(i == j)
+                    if(num[i] == input_num[j])
                     {
-                        printf("A");
-                    }
+                        if(i == j)
+                        {
+                            printf("A");
+                        }
+                        else
+                        {
+                            printf("B");
+                        }
+                        break;
+                    }   
                     else
-                    {
-                        printf("B");
-                    }
-                    break;
+                    k++;
                 }
             }
-        }
+        if(n*n == k)
+        {
+            printf("0000");
+        }   
+     }  
+     else
+       {
+       printf("you input number not conform to requirements!!");
+       }
         printf("\nplesase input  four not repeated figures again:");
     }
+}
+
+
+int input_error(char num[], int n)
+{
+    int i, j;
+
+    for (i = 0; i < n; i++) 
+    {
+        if(num[i]>0x39 || num[i]<0x30)
+            return 0;
+        for (j = 0; j < i; j++) 
+        {
+            if(num[i] == num[j])
+                return 0;
+        }
+    }
+
+    return 1;
 }
