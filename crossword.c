@@ -109,7 +109,7 @@ int input_error(char num[], int n)
 {
     int i, j;
     
-    if(num[4] != '\n')
+    if(num[n+1] != '\n')
         return 0;
     for (i = 0; i < n; i++) 
     {
