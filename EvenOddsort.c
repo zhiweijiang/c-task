@@ -6,6 +6,7 @@
 void init_num(int a[], int n);
 void print_num(int a[], int n);
 void EvenOddsort(int a[], int n);
+void sort_num(int a[], int x, int y);
 
 int main(int argc, const char *argv[])
 {
@@ -50,11 +51,9 @@ void EvenOddsort(int a[], int n)
     int i = 0;
     int j = n-1;
     int tmp;
-    int Oddnu;
-    int Evennu;
     int k;
 
-    while(i<j)
+    while(i <= j)
     {
         while(a[i]%2 != 0) i++;
         while(a[j]%2 == 0) j--;
@@ -67,12 +66,20 @@ void EvenOddsort(int a[], int n)
             j --;
         }
     }
-    Oddnu = j+1;
-    Evennu = i;
-    for (i = 0; i < Oddnu; i++) 
+    sort_num(a, 0, j+1);
+    sort_num(a, i, n);
+}
+   
+void sort_num(int a[], int x, int y)
+{
+    int i,j;
+    int k;
+    int tmp;
+
+    for (i = x; i < y; i++) 
     {   
         k = i;
-        for (j = i+1; j < Oddnu; j++) 
+        for (j = i+1; j < y; j++) 
         {
             if(a[j] < a[k])
                 k = j;
@@ -84,20 +91,5 @@ void EvenOddsort(int a[], int n)
             a[k] = tmp;
         }
     }
-    
-    for (i = Evennu; i < n; i++) 
-    {   
-        k = i;
-        for (j = i+1; j < n; j++) 
-        {
-            if(a[j] < a[k])
-                k = j;
-        }
-        if(i != k)
-        {
-            tmp = a[i];
-            a[i] = a[k];
-            a[k] = tmp;
-        }
-    }
-} 
+   
+}
