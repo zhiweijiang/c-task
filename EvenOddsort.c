@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <time.h>
+#include <stdlib.h>
 #include <string.h>
 #define N 8
 
@@ -51,7 +52,6 @@ void EvenOddsort(int a[], int n)
     int i = 0;
     int j = n-1;
     int tmp;
-    int k;
 
     while(i <= j)
     {
@@ -75,15 +75,22 @@ void sort_num(int a[], int x, int y)
     int i,j;
     int k;
     int tmp;
+    int flag = 0;
 
     for (i = x; i < y; i++) 
     {   
+        flag = 1;
         k = i;
         for (j = i+1; j < y; j++) 
         {
             if(a[j] < a[k])
-                k = j;
+               {
+                    k = j;
+                    flag = 0;
+               }
         }
+        if(flag)
+            break;
         if(i != k)
         {
             tmp = a[i];
