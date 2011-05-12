@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
+#include <stdlib.h>
 
 int a[8];
-
 
 void print(int a[], int n)
 {   
@@ -51,7 +52,6 @@ void insert_even(int *i)
             a[k-repnum+*i+1] = tmp;
             *i = *i-1;
         }
-        print(a, 8);
 }
 
 void init(int a[], int n)
